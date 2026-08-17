@@ -58,7 +58,7 @@ body{background:radial-gradient(circle at top,#fffdf8 0,#f7f1e6 38%,#f3eee5 100%
 <body>
 <div class="header"><div class="nav">
   <div class="logo">ابن الملك <span>👑</span></div>
-  <div class="navlinks"><a href="#products">المنتجات</a><a href="#about">عن المتجر</a><a href="#contact">تواصل معنا</a></div>
+  <div class="navlinks"><a href="#products">المنتجات</a><a href="cart.html">السلة 🛒</a><a href="#about">عن المتجر</a><a href="#contact">تواصل معنا</a></div>
 </div></div>
 
 <div class="hero">
@@ -81,7 +81,7 @@ body{background:radial-gradient(circle at top,#fffdf8 0,#f7f1e6 38%,#f3eee5 100%
   <div class="about">
     <h2>عن ابن الملك</h2>
     <p>متجر لبيع الشنط والمنتجات المتنوعة، والهدف إنك تلاقي الموديل المناسب بسهولة وتطلبه من أي محافظة في مصر.</p>
-    <b>ملاحظة:</b> الأسعار والمخزون قابلان للتعديل من لوحة التحكم في النسخة التجريبية.
+    <b>ملاحظة:</b> الأسعار والمخزون قابلان للتعديل من لوحة التحكم.
   </div>
 </div>
 
@@ -96,105 +96,6 @@ body{background:radial-gradient(circle at top,#fffdf8 0,#f7f1e6 38%,#f3eee5 100%
 <div class="toast" id="toast"></div>
 <div class="footer">© 2026 ابن الملك — شحن لجميع محافظات مصر</div>
 
-<script>
-const PRODUCTS = [
-  {
-    "id": 1,
-    "name": "تشكيلة شنط مدارس متنوعة",
-    "category": "شنط مدارس",
-    "image": "images/product-1.jpg",
-    "price": 0
-  },
-  {
-    "id": 2,
-    "name": "شنطة ظهر CAT - موديل 1",
-    "category": "شنط مدارس",
-    "image": "images/product-2.jpg",
-    "price": 0
-  },
-  {
-    "id": 3,
-    "name": "شنط ظهر CAT - موديلات متنوعة",
-    "category": "شنط مدارس",
-    "image": "images/product-3.jpg",
-    "price": 0
-  },
-  {
-    "id": 4,
-    "name": "شنط ظهر CAT - موديلات سادة",
-    "category": "شنط مدارس",
-    "image": "images/product-4.jpg",
-    "price": 0
-  },
-  {
-    "id": 5,
-    "name": "شنط ظهر CAT - موديلات متعددة",
-    "category": "شنط مدارس",
-    "image": "images/product-5.jpg",
-    "price": 0
-  },
-  {
-    "id": 6,
-    "name": "شنطة ظهر عملية - ME",
-    "category": "شنط مدارس",
-    "image": "images/product-6.jpg",
-    "price": 0
-  },
-  {
-    "id": 7,
-    "name": "شنطة ظهر رياضية",
-    "category": "شنط مدارس",
-    "image": "images/product-7.jpg",
-    "price": 0
-  },
-  {
-    "id": 8,
-    "name": "شنط أطفال - ألوان وتصميمات",
-    "category": "شنط أطفال",
-    "image": "images/product-8.jpg",
-    "price": 0
-  }
-];
-const WHATSAPP = "201285151156"; // غيّر الرقم إلى رقم واتسابك بصيغة 20xxxxxxxxxx
-let cart = JSON.parse(localStorage.getItem("ibnmalek_cart") || "[]");
-let active = "الكل";
-
-function money(p) { return p > 0 ? p + " جنيه" : "السعر عند الطلب"; }
-
-function renderFilters() {
-  const cats = ["الكل", ...new Set(PRODUCTS.map(p=>p.category))];
-  document.getElementById("filters").innerHTML = cats.map(c =>
-    `<button class="${c===active?'active':''}" onclick="setCat('${c}')">${c}</button>`).join("");
-}
-function setCat(c) { active=c; renderFilters(); renderProducts(); }
-function renderProducts() {
-  const list = active==="الكل" ? PRODUCTS : PRODUCTS.filter(p=>p.category===active);
-  document.getElementById("count").textContent = list.length + " منتج";
-  document.getElementById("grid").innerHTML = list.map(p=>`
-    <article class="card">
-      <img src="${p.image}" alt="${p.name}">
-      <div class="cardbody">
-        <div class="cat">${p.category}</div>
-        <div class="name">${p.name}</div>
-        <div class="price">${money(p.price)}</div>
-        <button class="btn" onclick="addToCart(${p.id})">أضف للسلة</button>
-      </div>
-    </article>`).join("");
-}
-function addToCart(id) {
-  const p=PRODUCTS.find(x=>x.id===id);
-  cart.push(p); localStorage.setItem("ibnmalek_cart",JSON.stringify(cart));
-  document.getElementById("cartCount").textContent=cart.length;
-  toast("تمت إضافة المنتج للسلة ✅");
-}
-function showCart() {
-  if(!cart.length) return toast("السلة فارغة");
-  const text = cart.map((p,i)=>`${i+1}- ${p.name}`).join("\n");
-  const msg = encodeURIComponent("السلام عليكم، أريد طلب:\n"+text+"\n\nالاسم:\nالمحافظة:\nالعنوان:");
-  window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");
-}
-function toast(t) { const x=document.getElementById("toast");x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",1800); }
-renderFilters();renderProducts();document.getElementById("cartCount").textContent=cart.length;
-</script>
+<script src="app.js"></script><script>function showCart(){window.location.href="cart.html"}</script>
 </body>
 </html>
