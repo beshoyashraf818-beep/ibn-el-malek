@@ -18,8 +18,10 @@ const shippingDefaults = {"القاهرة":50,"الجيزة":50,"الإسكند�
 const defaultSettings = {storeName:"ابن الملك",phone:"01285151156",whatsapp:"201285151156",shipping:50,shippingRates:shippingDefaults,banner:"جودة عالية بأسعار مميزة"};
 
 function read(key, fallback){try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}catch{return fallback}}
-function write(key,value){localStorage.setItem(key,JSON.stringify(value))}
-function products(){return read(PRODUCT_KEY, defaults)}
+function write(key,value){localStorage.setItem(key,JSON.stringify(value))}function products(){
+  const saved = read(PRODUCT_KEY, null);
+  return Array.isArray(saved) && saved.length ? saved : defaults;
+}
 function saveProducts(v){write(PRODUCT_KEY,v)}
 function cart(){return read(CART_KEY,[])}
 function saveCart(v){write(CART_KEY,v);updateCartCount()}
