@@ -14,7 +14,8 @@ const defaults = [
   {id:7,name:"شنطة ظهر رياضية",price:0,oldPrice:0,category:"شنط مدارس",stock:10,image:"images/product-7.jpg",desc:"منتج تجريبي — السعر يحدد لاحقًا."},
   {id:8,name:"شنط أطفال - ألوان وتصميمات",price:0,oldPrice:0,category:"شنط بناتي",stock:10,image:"images/product-8.jpg",desc:"منتج تجريبي — السعر يحدد لاحقًا."}
 ];
-const defaultSettings = {storeName:"ابن الملك",phone:"01285151156",whatsapp:"201285151156",shipping:50,banner:"جودة عالية بأسعار مميزة"};
+const shippingDefaults = {"القاهرة":50,"الجيزة":50,"الإسكندرية":60,"الإسماعيلية":60,"الشرقية":60,"الدقهلية":65,"القليوبية":55,"المنوفية":60,"البحيرة":65,"الغربية":60,"بورسعيد":65,"السويس":60,"دمياط":65,"أسيوط":75,"سوهاج":80,"قنا":85,"الأقصر":90,"أسوان":95,"مطروح":90,"البحر الأحمر":90,"الفيوم":65,"بني سويف":65,"المنيا":70,"كفر الشيخ":65,"شمال سيناء":95,"جنوب سيناء":100,"الوادي الجديد":100};
+const defaultSettings = {storeName:"ابن الملك",phone:"01285151156",whatsapp:"201285151156",shipping:50,shippingRates:shippingDefaults,banner:"جودة عالية بأسعار مميزة"};
 
 function read(key, fallback){try{const v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v)}catch{return fallback}}
 function write(key,value){localStorage.setItem(key,JSON.stringify(value))}
@@ -47,7 +48,8 @@ function cartDetails(){
   const ps=products();
   return cart().map(x=>{const p=ps.find(y=>y.id===x.id);return p?{...p,qty:x.qty,lineTotal:Number(p.price||0)*x.qty}:null}).filter(Boolean)
 }
-function cartTotals(){const items=cartDetails();const subtotal=items.reduce((s,x)=>s+x.lineTotal,0);const shipping=items.length?Number(settings().shipping||0):0;return {items,subtotal,shipping,total:subtotal+shipping}}
+function getShipping(gov){const s=settings();const rates=s.shippingRates||{};if(gov && rates[gov]!==undefined && rates[gov]!=="")return Number(rates[gov])||0;return Number(s.shipping||0)}
+function cartTotals(gov){const items=cartDetails();const subtotal=items.reduce((s,x)=>s+x.lineTotal,0);const shipping=items.length?getShipping(gov):0;return {items,subtotal,shipping,total:subtotal+shipping}}
 
 function renderHome(){
   const grid=document.querySelector("#grid"); if(!grid)return;
@@ -72,8 +74,12 @@ function renderCart(){
 }
 function submitOrder(e){
   e.preventDefault();
-  const {items,subtotal,shipping,total}=cartTotals();if(!items.length){toast("السلة فارغة");return}
-  const f=new FormData(e.target), s=settings();
+  const f=new FormData(e.target), gov=f.get("gov"), s=settings();
+  const {items,subtotal,shipping,total}=cartTotals(gov);if(!items.length){toast("السلة فارغة");return}
+  const phone=String(f.get("phone")||"").replace(/[^0-9+]/g,"");
+  if(phone.replace(/\D/g,"").length < 10){toast("اكتب رقم موبايل صحيح");return}
+  const confirmed=confirm(`مراجعة الطلب\n\nقيمة المنتجات: ${money(subtotal)}\nالشحن: ${money(shipping)}\nالإجمالي: ${money(total)}\n\nإرسال الطلب على واتساب؟`);
+  if(!confirmed)return;
   const order={id:Date.now(),name:f.get("name"),phone:f.get("phone"),gov:f.get("gov"),address:f.get("address"),items:items.map(x=>({id:x.id,name:x.name,qty:x.qty,price:x.price})),subtotal,shipping,total,date:new Date().toLocaleString("ar-EG"),status:"جديد"};
   const orders=read(ORDER_KEY,[]);orders.unshift(order);write(ORDER_KEY,orders);
   const lines=items.map((x,i)=>`${i+1}) ${x.name} — الكمية: ${x.qty} — ${x.price>0?money(x.lineTotal):"السعر عند الطلب"}`).join("\n");
@@ -103,3 +109,4 @@ function showTab(t){["products","orders","settings"].forEach(x=>document.querySe
 if(!localStorage.getItem(PRODUCT_KEY))write(PRODUCT_KEY,defaults);
 if(!localStorage.getItem(SETTINGS_KEY))write(SETTINGS_KEY,defaultSettings);
 if(document.querySelector("#grid")){renderHome();document.querySelector("#search")?.addEventListener("input",renderHome)}
+if(document.querySelector("#orderForm")){const gov=document.querySelector("[name=gov]");gov?.addEventListener("change",()=>renderCart());}
