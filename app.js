@@ -3,7 +3,7 @@ const CART_KEY = "ibn_cart";
 const ORDER_KEY = "ibn_orders";
 const SETTINGS_KEY = "ibn_settings";
 
-const categories = ["شنط مدارس","شنط سفر","شنط حريمي","شنط بناتي","محافظ","ناموسيات أطفال","شمسيات"];
+const categories = ["شنط مدارس","شنط سفر","شنط كروس","شنط يد","شنط الجيش","محافظ","ناموسيات أطفال","شمسيات","منتجات أخرى"];
 const defaults = [
   {id:1,name:"تشكيلة شنط مدارس متنوعة",price:0,oldPrice:0,category:"شنط مدارس",stock:20,image:"images/product-1.jpg",desc:"منتج تجريبي — السعر يحدد لاحقًا."},
   {id:2,name:"شنطة ظهر CAT - موديل 1",price:0,oldPrice:0,category:"شنط مدارس",stock:10,image:"images/product-2.jpg",desc:"منتج تجريبي — السعر يحدد لاحقًا."},

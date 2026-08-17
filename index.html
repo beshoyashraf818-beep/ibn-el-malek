@@ -19,7 +19,7 @@ a{text-decoration:none;color:inherit}button,input,select{font:inherit}
 .wrap{max-width:1150px;margin:28px auto;padding:0 18px}
 .section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
 .section-title h2{margin:0;font-size:25px}
-.filters{display:flex;gap:10px;overflow:auto;padding-bottom:12px}
+.section-hint{font-weight:900;margin:0 0 8px;color:#6b5520}.filters{display:flex;gap:10px;overflow:auto;padding-bottom:12px}
 .filters button{border:1px solid #ddd;background:#fff;padding:9px 15px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .filters button.active{background:#111;color:#fff}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -73,7 +73,7 @@ body{background:radial-gradient(circle at top,#fffdf8 0,#f7f1e6 38%,#f3eee5 100%
 
 <div class="wrap" id="products">
   <div class="section-title"><h2>منتجاتنا</h2><span id="count"></span></div>
-  <div class="filters" id="filters"></div>
+  <div class="section-hint">الأقسام</div><div class="filters" id="filters"></div>
   <div class="grid" id="grid"></div>
 </div>
 
