@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ابن الملك | شنط ومنتجات متنوعة في مصر</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f6f7fb;color:#171717}
+a{text-decoration:none;color:inherit}button,input,select{font:inherit}
+.header{background:#111;color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 15px #0002}
+.nav{max-width:1150px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+.logo{font-size:25px;font-weight:900;color:#f4c542} .logo span{color:#fff}
+.navlinks{display:flex;gap:18px;font-size:14px}.navlinks a:hover{color:#f4c542}
+.hero{max-width:1150px;margin:22px auto;padding:42px 22px;border-radius:24px;background:linear-gradient(135deg,#171717,#343434);color:#fff;display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:center}
+.hero h1{font-size:42px;margin:0 0 12px}.hero p{color:#ddd;line-height:1.9}
+.badge{display:inline-block;background:#f4c542;color:#111;font-weight:800;padding:7px 13px;border-radius:999px;margin-bottom:12px}
+.cta{display:inline-block;background:#f4c542;color:#111;padding:12px 20px;border-radius:12px;font-weight:800}
+.hero-img{width:100%;height:270px;object-fit:cover;border-radius:18px}
+.wrap{max-width:1150px;margin:28px auto;padding:0 18px}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
+.section-title h2{margin:0;font-size:25px}
+.filters{display:flex;gap:10px;overflow:auto;padding-bottom:12px}
+.filters button{border:1px solid #ddd;background:#fff;padding:9px 15px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.filters button.active{background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #00000008}
+.card img{width:100%;height:220px;object-fit:cover;display:block}
+.cardbody{padding:13px}.cat{font-size:12px;color:#777}.name{font-weight:800;margin:7px 0;min-height:42px}
+.price{font-weight:900;color:#111;margin:8px 0 12px}
+.btn{width:100%;border:0;border-radius:11px;padding:10px;cursor:pointer;font-weight:800;background:#111;color:#fff}
+.btn:hover{background:#f4c542;color:#111}
+.about{background:#fff;border-radius:18px;padding:22px;line-height:2;border:1px solid #eee}
+.footer{margin-top:45px;background:#111;color:#ddd;padding:30px 18px;text-align:center}
+.cart{position:fixed;bottom:18px;left:18px;background:#f4c542;color:#111;padding:12px 16px;border-radius:999px;font-weight:900;box-shadow:0 8px 25px #0003;z-index:30}
+.toast{position:fixed;top:78px;right:18px;background:#111;color:#fff;padding:12px 16px;border-radius:10px;display:none;z-index:50}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero h1{font-size:32px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:10px}.card img{height:170px}.navlinks{display:none}.hero{margin:12px}}
+</style>
+
+<style>
+:root{--gold:#d7a62a;--gold2:#f1cc63;--ink:#0b0b0b;--paper:#f6f1e7}
+body{background:radial-gradient(circle at top,#fffdf8 0,#f7f1e6 38%,#f3eee5 100%);color:#171717}
+.header{background:linear-gradient(110deg,#070707,#171717);border-bottom:1px solid #3b2c0c}
+.logo{color:var(--gold2);letter-spacing:.3px}
+.hero{background:linear-gradient(135deg,#0b0b0b 0%,#191919 58%,#2a2110 100%);border:1px solid #5c4818;box-shadow:0 18px 50px #0003}
+.hero-img{height:300px;object-fit:contain;background:linear-gradient(145deg,#f8f4ec,#eee6d8);padding:14px;box-shadow:inset 0 0 0 1px #d9c9a4}
+.card{background:rgba(255,255,255,.96);border:1px solid #e7ddc9;box-shadow:0 10px 28px #0000000d;transition:.2s transform,.2s box-shadow}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 34px #00000016}
+.card img{height:245px;object-fit:contain;background:linear-gradient(145deg,#fbf8f1,#eee6d8);padding:12px}
+.btn{background:#111}
+.btn:hover{background:var(--gold2);color:#111}
+.filters button.active{background:#111;border-color:#111}
+.cart{background:var(--gold2);border:1px solid #8b6818}
+.footer{background:#0b0b0b;border-top:1px solid #4b3912}
+</style>
+
+</head>
+<body>
+<div class="header"><div class="nav">
+  <div class="logo">ابن الملك <span>👑</span></div>
+  <div class="navlinks"><a href="#products">المنتجات</a><a href="#about">عن المتجر</a><a href="#contact">تواصل معنا</a></div>
+</div></div>
+
+<div class="hero">
+  <div>
+    <div class="badge">شحن لجميع محافظات مصر 🇪🇬</div>
+    <h1>ابن الملك</h1>
+    <p>شنط مدارس، شنط أطفال وشنط ظهر بتشكيلات متنوعة. اختار المنتج وابعت طلبك بسهولة.</p>
+    <a class="cta" href="#products">شوف المنتجات</a>
+  </div>
+  <img class="hero-img" src="images/product-1.jpg" alt="منتجات ابن الملك">
+</div>
+
+<div class="wrap" id="products">
+  <div class="section-title"><h2>منتجاتنا</h2><span id="count"></span></div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="wrap" id="about">
+  <div class="about">
+    <h2>عن ابن الملك</h2>
+    <p>متجر لبيع الشنط والمنتجات المتنوعة، والهدف إنك تلاقي الموديل المناسب بسهولة وتطلبه من أي محافظة في مصر.</p>
+    <b>ملاحظة:</b> الأسعار والمخزون قابلان للتعديل من لوحة التحكم في النسخة التجريبية.
+  </div>
+</div>
+
+<div class="wrap" id="contact">
+  <div class="about">
+    <h2>التواصل والطلبات</h2>
+    <p>ضع رقم واتساب الخاص بك في ملف <code>app.js</code> مكان الرقم الموجود في المتغير <code>WHATSAPP</code>.</p>
+  </div>
+</div>
+
+<div class="cart" onclick="showCart()">🛒 السلة: <span id="cartCount">0</span></div>
+<div class="toast" id="toast"></div>
+<div class="footer">© 2026 ابن الملك — شحن لجميع محافظات مصر</div>
+
+<script>
+const PRODUCTS = [
+  {
+    "id": 1,
+    "name": "تشكيلة شنط مدارس متنوعة",
+    "category": "شنط مدارس",
+    "image": "images/product-1.jpg",
+    "price": 0
+  },
+  {
+    "id": 2,
+    "name": "شنطة ظهر CAT - موديل 1",
+    "category": "شنط مدارس",
+    "image": "images/product-2.jpg",
+    "price": 0
+  },
+  {
+    "id": 3,
+    "name": "شنط ظهر CAT - موديلات متنوعة",
+    "category": "شنط مدارس",
+    "image": "images/product-3.jpg",
+    "price": 0
+  },
+  {
+    "id": 4,
+    "name": "شنط ظهر CAT - موديلات سادة",
+    "category": "شنط مدارس",
+    "image": "images/product-4.jpg",
+    "price": 0
+  },
+  {
+    "id": 5,
+    "name": "شنط ظهر CAT - موديلات متعددة",
+    "category": "شنط مدارس",
+    "image": "images/product-5.jpg",
+    "price": 0
+  },
+  {
+    "id": 6,
+    "name": "شنطة ظهر عملية - ME",
+    "category": "شنط مدارس",
+    "image": "images/product-6.jpg",
+    "price": 0
+  },
+  {
+    "id": 7,
+    "name": "شنطة ظهر رياضية",
+    "category": "شنط مدارس",
+    "image": "images/product-7.jpg",
+    "price": 0
+  },
+  {
+    "id": 8,
+    "name": "شنط أطفال - ألوان وتصميمات",
+    "category": "شنط أطفال",
+    "image": "images/product-8.jpg",
+    "price": 0
+  }
+];
+const WHATSAPP = "201285151156"; // غيّر الرقم إلى رقم واتسابك بصيغة 20xxxxxxxxxx
+let cart = JSON.parse(localStorage.getItem("ibnmalek_cart") || "[]");
+let active = "الكل";
+
+function money(p) { return p > 0 ? p + " جنيه" : "السعر عند الطلب"; }
+
+function renderFilters() {
+  const cats = ["الكل", ...new Set(PRODUCTS.map(p=>p.category))];
+  document.getElementById("filters").innerHTML = cats.map(c =>
+    `<button class="${c===active?'active':''}" onclick="setCat('${c}')">${c}</button>`).join("");
+}
+function setCat(c) { active=c; renderFilters(); renderProducts(); }
+function renderProducts() {
+  const list = active==="الكل" ? PRODUCTS : PRODUCTS.filter(p=>p.category===active);
+  document.getElementById("count").textContent = list.length + " منتج";
+  document.getElementById("grid").innerHTML = list.map(p=>`
+    <article class="card">
+      <img src="${p.image}" alt="${p.name}">
+      <div class="cardbody">
+        <div class="cat">${p.category}</div>
+        <div class="name">${p.name}</div>
+        <div class="price">${money(p.price)}</div>
+        <button class="btn" onclick="addToCart(${p.id})">أضف للسلة</button>
+      </div>
+    </article>`).join("");
+}
+function addToCart(id) {
+  const p=PRODUCTS.find(x=>x.id===id);
+  cart.push(p); localStorage.setItem("ibnmalek_cart",JSON.stringify(cart));
+  document.getElementById("cartCount").textContent=cart.length;
+  toast("تمت إضافة المنتج للسلة ✅");
+}
+function showCart() {
+  if(!cart.length) return toast("السلة فارغة");
+  const text = cart.map((p,i)=>`${i+1}- ${p.name}`).join("\n");
+  const msg = encodeURIComponent("السلام عليكم، أريد طلب:\n"+text+"\n\nالاسم:\nالمحافظة:\nالعنوان:");
+  window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");
+}
+function toast(t) { const x=document.getElementById("toast");x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",1800); }
+renderFilters();renderProducts();document.getElementById("cartCount").textContent=cart.length;
+</script>
+</body>
+</html>
